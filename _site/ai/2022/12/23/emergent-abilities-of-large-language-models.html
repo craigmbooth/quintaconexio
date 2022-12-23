@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Quinta Conexio &mdash; Emergent Abilities of Large Language Models</title>
+
+    <meta name="description" content="Unusual or unexpected connections.">  
+
+    <link rel="stylesheet" href="http://localhost:4000/assets/css/main.css?1671813523547943129">
+
+    <link rel="apple-touch-icon" href="/assets/images/icon-512.png"></head>
+  <body>
+
+    
+      <a href="#main" class="skip-navigation">
+        Skip to content
+      </a>
+    
+
+    
+  
+
+
+  <nav class="site-navigation" role="navigation">
+    <ul>
+      <li>
+        <a href="/">
+          Home
+        </a>
+      </li>
+    
+      <li >
+        
+          <a href="about.html">
+            About
+          </a>
+        
+      </li>
+    
+      <li >
+        
+          <a href="https://www.craigmbooth.com">
+            Author
+          </a>
+        
+      </li>
+    
+    </ul>
+  </nav>
+
+
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting" id="main" role="article" aria-label="Content">
+
+  
+    <h1 class="post-title divided p-name" itemprop="name headline">
+      Emergent Abilities of Large Language Models
+    </h1>
+  
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Wei, J., Tay, Y., Bommasani, R., Raffel, C., Zoph, B., Borgeaud, S., Yogatama, D., Bosma, M., Zhou, D., Metzler, D., Chi, E. H., Hashimoto, T., Vinyals, O., Liang, P., Dean, J., &amp; Fedus, W. (2022). <em>Emergent Abilities of Large Language Models</em> (Version 2). arXiv. <a href="https://doi.org/10.48550/ARXIV.2206.07682">https://doi.org/10.48550/ARXIV.2206.07682</a></p>
+
+<h3 id="tldr">tl;dr</h3>
+
+<p>Large language models (LLMs), such as GPT-3 that powers ChatGPT demonstrate emergent abilities.  That is:  By training models on incrementally more data, they eventually hit a scale where they suddenly “learn” new skills – for example, at a certain size, a LLM becomes capable of translating from one language to another, and below that size it is incapable of doing so.</p>
+
+<p>This paper is primarily a survey of the literature of emergent abilities, it does not propose new methods but draws some interesting conclusions about emergent abilities:</p>
+
+<ul>
+  <li>There currently exists no compelling explanation for why emergent abilities occur in LLMs</li>
+  <li>We can’t extrapolate current LLM abilities into the future, it is entirely possible that at increased sizes, LLMs will suddenly pick up the ability to perform more tasks, and we don’t know what those abilities will be.</li>
+  <li>“Emergent risks” are every bit as important as emergent abilities, what are LLMs getting better at with scale that is undesirable (e.g. spreading convincing misinformation)</li>
+</ul>
+
+<h3 id="important-definitions">Important Definitions</h3>
+
+<p>This paper discusses emergent abilities in large language models (LLMs), so let’s start by defining these things,m starting with the LLM itself.</p>
+
+<p>An LLM is a type of artificial intelligence (AI) system that has been trained to process and generate natural language text. LLMs are typically trained on vast amounts of text data, such as books, articles, and websites, in order to learn the patterns and structures of human language.  LLMs can be used for a variety of purposes, including translation, summarization, question answering, and text generation. They are able to understand and generate human-like text because they have learned to analyze and predict the structure and content of language based on the examples they were trained on.</p>
+
+<p>There is a huge interest in LLMs as I write this primarily because of the public release of ChatGPT, which is the LLM GPT-3, built by OpenAI, and used as a chatbot.  ChatGPT sometimes feels remarkably human, which given that an LLM itself is nothing but a statistical model trained on a pile of text to predict what comes next is quite striking, which brings us to the concept of <em>emergence</em></p>
+
+<blockquote>
+  <p>Emergence is when quantitative changes in a system result in qualitative changes in behavior.</p>
+</blockquote>
+
+<p>In the case that is relevant here, this means that as we make a <em>quantitative</em> change to a LLM (e.g. adding more training data), we are finding <em>qualitative</em> changes (e.g. the model suddenly got goot at math, or translation), which leads us to our last definition: emergent abilities.</p>
+
+<blockquote>
+  <p>An ability is emergent if it is not present in smaller models but is present in larger models.</p>
+</blockquote>
+
+<h3 id="what-they-did">What They Did</h3>
+
+<p>First, the authors demonstrate emergent abilities in five different LLMs, using prompting.  Prompting, or prompt engineering, is how many current LLMs are coaxed into solving different problems.  As a reminder, an LLM is essentially just a “next word” predictor, given a string of words, what do I think the next one will be?</p>
+
+<p>By surrounding a user query with text we can cause the LLM to do different things.  For example, if we wanted to summarize an article, we may use the following prompt for the LLM:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is an article followed by a summary:
+
+&lt;INSERT ARTICLE&gt;
+
+In summary:
+</code></pre></div></div>
+
+<p>Or if we wanted to build a chatbot (a-la ChatGPT), we may build a prompt like this:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is a conversation between a human (HUMAN)
+and a helpful AI (BOT)
+
+HUMAN: What is the capital of England?
+BOT: London
+HUMAN: &lt;INSERT HUMAN QUESTION&gt;
+BOT:
+</code></pre></div></div>
+
+<p>In each of these cases, the next-word-predictor takes over from the end of the prompt and summarizes, or chats, as it thinks the most likely continuation of the prompt would be.</p>
+
+<p>In the present paper, the authors pick a few benchmark tasks, and show that all the language models show emergent behaviors, as demonstrated in this figure.</p>
+
+<figure>
+  <img alt="Figure 2 from the paper, eight panels showing the performance of different LLMs on problems" src="/assets/images/posts/emergent/fig2.png" />
+  <figcaption>
+    Fig. 2 from the paper.  Each of the 8 panels represents a different task, and the lines show how good the language model is at that task.  The horizontal red line in each panel is random chance.  Below some scale, models generally perform no better than random chance, and then suddenly they hit a scale where the problem becomes "understood" and they are able to perform it.
+  </figcaption>
+</figure>
+
+<h3 id="interpretation">Interpretation</h3>
+
+<p>Emergent abilities are – by their very definitions – things that we can’t predict that a LLM will learn to do.  Tasks that LLMs currently struggle with are prime candidates for future places to look for emergent abilities (there are dozens of examples listed in appendix E4, including: authorship verification, checkmate in one, language games, mathematical induction, word problems on sets and graphs).  Emergent abilities are not just theoretical, the word-in-context benchmark (a task where the LLM has to distinguish which of the two meanings of the same word it has, given its context) was once outside the realm of what LLMs could handle, but with enough scale, the models became able to solve those problems.</p>
+
+<p>Emergent abilities have prompted a sociological shift in AI research, away from custom-building single-purpose AIs and into an explosion of research and development on general purpose models. The ability for general-purpose models to perform unseen tasks given only a few examples has also led to
+many new applications of language models outside the research community. For instance, language models have been used via prompting to translate natural language instructions into actions executable by robots, interact with users, and facilitate multi-modal reasoning. Large language models have also been deployed in the real-world both in products, such as GitHub CoPilot.</p>
+
+<h4 id="emergent-risks">Emergent Risks</h4>
+
+<p>Emergent abilities appear in LLMs without explicitly being trained on (for example, the ability to translate from one language to another was not targeted, but just “dropped out” of the model).  Is it possible that larger language models actually become <em>worse</em> at certain things?  For example, truthfulness, bias and toxicity.  There exists the <a href="https://github.com/inverse-scaling/prize">inverse scaling prize</a>, which is offering cash rewards for the strongest examples of tasks that show this behavior.</p>
+
+  </div>
+
+  <div class="post-meta">
+    
+    <time class="post-date dt-published" datetime="2022-12-23T00:00:00-06:00" itemprop="datePublished">December 23, 2022</time>
+  </div>
+
+  
+
+</article>
+
+
+    
+      <form method="get" id="search" action="https://duckduckgo.com/">
+  <input type="hidden" name="sites" value="http://localhost:4000"/>
+  <input type="hidden" name="k8" value="#222222"/>
+  <input type="hidden" name="k9" value="#dc4b3c"/>
+  <input type="hidden" name="kt" value="h"/>
+  <input type="text" id="search__input" name="q" placeholder="Search&hellip;"/ autocomplete="off">
+  <button type="submit" class="btn btn-bordered" tabindex="-1">Search</button>
+</form>
+    
+
+    
+
+
+  <nav class="site-navigation" role="navigation">
+    <ul>
+      <li>
+        <a href="/">
+          Home
+        </a>
+      </li>
+    
+      <li >
+        
+          <a href="about.html">
+            About
+          </a>
+        
+      </li>
+    
+      <li >
+        
+          <a href="https://www.craigmbooth.com">
+            Author
+          </a>
+        
+      </li>
+    
+    </ul>
+  </nav>
+
+
+    
+      <aside class="site-credits">
+        <p>
+          <small><a href="https://github.com/patdryburgh/hitchens">Hitchens Theme</a> powered by <a href="http://jekyllrb.com">Jekyll</a></small>
+        </p>
+      </aside>
+    
+
+  </body>
+</html>
