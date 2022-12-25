@@ -18,13 +18,15 @@ email: craigmbooth@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Unusual or unexpected connections.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://quintaconex.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://quintaconex.io"
 icon: /assets/images/icon-512.png
 twitter_username: cmb
 github_username:  craigmbooth
 
 # Build settings
 markdown: kramdown
+
+hide_credits: true
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -43,3 +45,5 @@ plugins:
 
 paginate: 3
 paginate_path: "/page/:num/"
+
+permalink: /papers/:title/
