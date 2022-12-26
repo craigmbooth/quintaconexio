@@ -2,11 +2,12 @@
 title: Emergent Abilities of Large Language Models
 category: ai
 layout: post
+excerpt: AIs learn unexpected new skills as they get larger. What does this imply?
 ---
 
 Wei, J., Tay, Y., Bommasani, R., Raffel, C., Zoph, B., Borgeaud, S., Yogatama, D., Bosma, M., Zhou, D., Metzler, D., Chi, E. H., Hashimoto, T., Vinyals, O., Liang, P., Dean, J., & Fedus, W. (2022). *Emergent Abilities of Large Language Models* (Version 2). arXiv. [https://doi.org/10.48550/ARXIV.2206.07682](https://doi.org/10.48550/ARXIV.2206.07682)
 
-### tl;dr
+### In Brief
 
 Large language models (LLMs), such as GPT-3 that powers ChatGPT demonstrate emergent abilities.  That is:  By training models on incrementally more data, they eventually hit a scale where they suddenly “learn” new skills – for example, at a certain size, a LLM becomes capable of translating from one language to another, and below that size it is incapable of doing so.
 

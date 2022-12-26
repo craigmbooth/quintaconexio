@@ -16,7 +16,8 @@
 title: Quinta Conexio
 email: craigmbooth@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Unusual or unexpected connections.
+  Satisfying my curiosity about the world and its unexpected and unusual connections
+
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://quintaconex.io"
 icon: /assets/images/icon-512.png
@@ -47,3 +48,5 @@ paginate: 3
 paginate_path: "/page/:num/"
 
 permalink: /papers/:title/
+
+show_excerpts: true
