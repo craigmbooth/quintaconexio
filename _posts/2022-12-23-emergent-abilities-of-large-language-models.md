@@ -9,7 +9,7 @@ Wei, J., Tay, Y., Bommasani, R., Raffel, C., Zoph, B., Borgeaud, S., Yogatama, D
 
 ### In Brief
 
-Large language models (LLMs), such as GPT-3 that powers ChatGPT demonstrate emergent abilities.  That is:  By training models on incrementally more data, they eventually hit a scale where they suddenly “learn” new skills – for example, at a certain size, a LLM becomes capable of translating from one language to another, and below that size it is incapable of doing so.
+Large language models (LLMs), such as GPT-3 that powers [ChatGPT](https://openai.com/blog/chatgpt/) demonstrate *emergent abilities*.  That is: By training models on incrementally more data, they eventually hit a scale where they suddenly “learn” new skills – for example, at a certain size, a LLM becomes capable of translating from one language to another, and below that size it is incapable of doing so.
 
 This paper is primarily a survey of the literature of emergent abilities, it does not propose new methods but draws some interesting conclusions about emergent abilities:
 
@@ -19,21 +19,21 @@ This paper is primarily a survey of the literature of emergent abilities, it doe
 
 ### Important Definitions
 
-This paper discusses emergent abilities in large language models (LLMs), so let's start by defining these things,m starting with the LLM itself.
+This paper discusses emergent abilities in LLMs, so let's start by defining these things, starting with the LLM itself.
 
 An LLM is a type of artificial intelligence (AI) system that has been trained to process and generate natural language text. LLMs are typically trained on vast amounts of text data, such as books, articles, and websites, in order to learn the patterns and structures of human language.  LLMs can be used for a variety of purposes, including translation, summarization, question answering, and text generation. They are able to understand and generate human-like text because they have learned to analyze and predict the structure and content of language based on the examples they were trained on.
 
-There is a huge interest in LLMs as I write this primarily because of the public release of ChatGPT, which is the LLM GPT-3, built by OpenAI, and used as a chatbot.  ChatGPT sometimes feels remarkably human, which given that an LLM itself is nothing but a statistical model trained on a pile of text to predict what comes next is quite striking, which brings us to the concept of *emergence*
+At time of writing this summary, there is a huge interest in LLMs primarily because of the public release of ChatGPT, which is a striking, publicly accessible, example of a LLM that can be used by the general public.  ChatGPT sometimes feels remarkably human, which given that an LLM itself is nothing but a statistical model is quite striking, which brings us to the concept of *emergence*
 
 >Emergence is when quantitative changes in a system result in qualitative changes in behavior.
 
-In the case that is relevant here, this means that as we make a *quantitative* change to a LLM (e.g. adding more training data), we are finding *qualitative* changes (e.g. the model suddenly got goot at math, or translation), which leads us to our last definition: emergent abilities.
+In the case that is relevant here, this means that as we make a *quantitative* change to a LLM (e.g. adding more training data), we are finding *qualitative* changes (e.g. the model suddenly got good at math, or translation), which leads us to our last definition: emergent abilities.
 
 > An ability is emergent if it is not present in smaller models but is present in larger models.
 
 ### What They Did
 
-First, the authors demonstrate emergent abilities in five different LLMs, using prompting.  Prompting, or prompt engineering, is how many current LLMs are coaxed into solving different problems.  As a reminder, an LLM is essentially just a "next word" predictor, given a string of words, what do I think the next one will be?
+First, the authors demonstrate emergent abilities in five different LLMs, using prompting.  Prompting, or prompt engineering, is how many current LLMs are coaxed into solving different problems.  An LLM is a statistical model trained to look at some text and predict what the next word will be.
 
 By surrounding a user query with text we can cause the LLM to do different things.  For example, if we wanted to summarize an article, we may use the following prompt for the LLM:
 
@@ -45,7 +45,7 @@ This is an article followed by a summary:
 In summary:
 ```
 
-Or if we wanted to build a chatbot (a-la ChatGPT), we may build a prompt like this:
+If we insert an article in the designated spot and let the LLM start completing after the text "In summary:", it will begin to summarize the article. If we wanted to build a chatbot (a-la ChatGPT), we may build a prompt like this:
 
 ```
 This is a conversation between a human (HUMAN)
@@ -57,7 +57,7 @@ HUMAN: <INSERT HUMAN QUESTION>
 BOT:
 ```
 
-In each of these cases, the next-word-predictor takes over from the end of the prompt and summarizes, or chats, as it thinks the most likely continuation of the prompt would be.
+And insert a human's question in the designated location, the AI will autocomplete an answer.
 
 In the present paper, the authors pick a few benchmark tasks, and show that all the language models show emergent behaviors, as demonstrated in this figure.
 
@@ -77,4 +77,4 @@ many new applications of language models outside the research community. For ins
 
 #### Emergent Risks
 
-Emergent abilities appear in LLMs without explicitly being trained on (for example, the ability to translate from one language to another was not targeted, but just "dropped out" of the model).  Is it possible that larger language models actually become *worse* at certain things?  For example, truthfulness, bias and toxicity.  There exists the [inverse scaling prize](https://github.com/inverse-scaling/prize), which is offering cash rewards for the strongest examples of tasks that show this behavior.
+Emergent abilities appear in LLMs without explicitly being trained in (for example, the ability to translate from one language to another was not targeted, but just "dropped out" of the model).  Is it possible that larger language models actually become *worse* at certain things?  For example, truthfulness, bias and toxicity.  There exists the [inverse scaling prize](https://github.com/inverse-scaling/prize), which is offering cash rewards for the strongest examples of tasks that show this behavior.
