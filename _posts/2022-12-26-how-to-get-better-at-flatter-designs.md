@@ -4,10 +4,12 @@ title: >
 category: business
 layout: post
 excerpt: Flat organizations have few layers of management. What needs to be true about a company for them to work?
+issn: 2245408X
 doi: 10.1007/s41469-022-00109-7
+tag: organizational-structure, corporate-hierarchy, flat-structure, delayering, decentralizing, autonomy
+reference: >
+  Reitzig, M. (2022). *How to get better at flatter designs: considerations for shaping and leading organizations with less hierarchy*. In Journal of Organization Design (Vol. 11, Issue 1, pp. 5–10). Springer Science and Business Media LLC. [https://doi.org/10.1007/s41469-022-00109-7](https://doi.org/10.1007/s41469-022-00109-7)
 ---
-
-Reitzig, M. (2022). *How to get better at flatter designs: considerations for shaping and leading organizations with less hierarchy*. In Journal of Organization Design (Vol. 11, Issue 1, pp. 5–10). Springer Science and Business Media LLC. [https://doi.org/10.1007/s41469-022-00109-7](https://doi.org/10.1007/s41469-022-00109-7)
 
 ### In Brief
 
