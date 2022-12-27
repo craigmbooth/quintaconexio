@@ -5,7 +5,7 @@ layout: post
 excerpt: AIs learn unexpected new skills as they get larger. What does this imply?
 issn: 20547390
 doi: 10.48550/ARXIV.2206.07682
-tag: large-language-models, artificial-intelligence, emergence
+tags: [large-language-models, artificial-intelligence, emergence]
 reference: >
   Wei, J., Tay, Y., Bommasani, R., Raffel, C., Zoph, B., Borgeaud, S., Yogatama, D., Bosma, M., Zhou, D., Metzler, D., Chi, E. H., Hashimoto, T., Vinyals, O., Liang, P., Dean, J., & Fedus, W. (2022). *Emergent Abilities of Large Language Models* (Version 2). arXiv. [https://doi.org/10.48550/ARXIV.2206.07682](https://doi.org/10.48550/ARXIV.2206.07682)
 ---
